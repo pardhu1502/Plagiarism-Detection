@@ -1,0 +1,119 @@
+
+===== PAGE 1 =====
+CS304 Artificial Intelligence
+Assignment 2
+Name : Abhigyan Niranjan
+Roll no. 22BCS001
+Q1 : " As per the law , it is a crime for an American to sell weapons
+to hostile nations . Country A , an enemy of America , has some
+missiles , and all the missiles were sold to it by Robert , who is an
+American citizen . "
+Now , prove that " Robert is a criminal . "
+Given :
+weapon ( R )
+hostile ( a )
+0 American (p ) .
+a
+a
+a
+sells (p. q. r ) - criminal ( )
+" enemy (A , America )
+omissile ( 1 ) " owns (A. 1 )
+0 hp missile(p ) " owns (A. p. - sells ( Robert ,
+a , pp.
+0 American ( Robert )
+Additionally .
+0 missile(p ) - weapon (p )
+
+
+===== PAGE 2 =====
+" enemy (p. America ) - hostile ( p )
+Proof using Forward Checking :
+Step 1 .
+0 0
+Step 2
+52 5
+Step 3 .
+2'
+
+
+===== PAGE 3 =====
+Q2 : Assume the following facts :
+o John likes all kinds of food .
+0 Apple and vegetable are food .
+. Anything anyone eats and is not killed is food .
+0 Anil eats peanuts and still alive .
+o Harry eats everything that Anil eats .
+Prove by resolution that " John likes peanuts . "
+Converting facts to first order logic :
+0.Ax food (x ) 2 likes ( John , x )
+" Food ( Apple ) " Food ( Vegetables )
+" A.X " My cats ( x. y ) " " killed ( x. y ) - food ( y )
+" eats ( Anil , Peanuts ) " alive ( Anil )
+0 " 4x eats ( Anil , x ) - eats ( Harry , x )
+0.Ax-killed (x ) - alive ( x )
+0 4x alive (x ) 2-killed ( x )
+Converting expressions to CNF :
+0.Ax-food (x ) v Likes (John , x )
+" Food ( Apple ) " Food ( Vegetables )
+" A.X " " " " " " " eats ( , Y ) v.
+foodly )
+" eats ( Anil , Peanuts ) " alive ( Anil )
+0. VX - eats ( Anil , x ) v cats ( Harry , x )
+o.Ax killed (x ) v alive ( x )
+
+
+===== PAGE 4 =====
+Standardize variables and drop quantifiers :
+0-food (x ) v Likes ( John , x )
+" FAO (APPIED
+" Food ( Vegetable )
+" " eatsly , z ) v killedly ) v food ( z )
+0eats ( Anil , Peanuts )
+o alive (ANILD .
+0 -cats ( Anil , W.V eats ( Harry , W. )
+o killed (g ) v alive ( g )
+Toprove : Likes ( John , Peanuts )
+Resolution graph :
+
+
+===== PAGE 5 =====
+0 1
+Therefore likes ( John. Peanuts )
+Q3 : Assume the following facts :
+0 .Amit only likes easy courses .
+0 Science courses are hard .
+# All the courses in the basket weaving department are easy .
+0 BK-304 is a basket weaving course .
+Use resolution to answer : " What courses would Amit like ? "
+Converting facts to first order logic :
+" Ex course ( x ) " easy ( x ) - likes ( Amit , x )
+
+
+===== PAGE 6 =====
+0.Ax scienceCourse ( x ) - " easy ( x )
+0 4x basketball leaving course ( x ) - easy ( x )
+obasketWeaving Course ( BK-304 )
+0 4x scienceCourse ( x ) - course ( x )
+0 " A x basketball leaving course ( x ) - course ( x )
+Converting expressions to CNF :
+0.Ax-course (x ) v.easy (x ) v Likes (Amit , x )
+0.Ax scienceCourse ( x ) v.easy ( x )
+0.Ax-basketWeavingCourse (x ) v easy ( x )
+obasketWeaving Course ( BK-304 )
+0.Ax-scienceCourse ( x ) v course ( x )
+" A x-basketMeaningCourse ( x ) v course ( x )
+Standardize variables and drop quantifiers :
+" " course ( x ) v " easy ( x ) v Likes ( Amit , x )
+0-scienceCoursely ) v.easyly )
+0-basketMeaningCourse (z ) v easy (z )
+obasketWeaving Course ( BK-304 )
+0-scienceCourse (m ) v course (m )
+0-basketWeavingCourse ( k ) v course ( k )
+Resolution Graph :
+
+
+===== PAGE 7 =====
+0 1
+Therefore , Amit likes the course BK-304
+

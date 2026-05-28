@@ -1,0 +1,152 @@
+
+===== PAGE 1 =====
+CS304 Artificial Intelligence
+Assignment 2
+Name: Abhigyan Niranjan
+Roll no: 22BCS001
+Q1: "As per the law, it is a crime for an American to sell weapons
+to hostile nations. Country A, an enemy of America, has some
+missiles, and all the missiles were sold to it by Robert, who is an
+American citizen."
+Now, prove that "Robert is a criminal."
+Given:
+american(p)
+A
+hostile(q)
+1 weapon(r)
+A
+sells(p, q, r) - criminal(p)
+enemy (A, America)
+missile(t1) A owns (A, t1)
+- Vp missile(p) A owns (A, p) >> sells(Robert,
+A, p)
+american(Robert)
+Additionally:
+missile(p) - weapon(p)
+
+===== PAGE 2 =====
+enemy(p, America) - hostile(p)
+Proof using Forward Checking:
+Step 1
+american(Robert)
+missle(t1)
+owns(A, t1)
+enemy(A, America)
+Step 2
+weapon(t1)
+sells(Robert, A, t1)
+hostile(A)
+american(Robert)
+missle(t1)
+owns(A, t1)
+enemy(A, America)
+Step 3
+sells(Robert, A, t1)
+weapon(t1)
+sells(Robert,A, t1)
+hostile(A)
+american(Robert)
+missle(t1)
+owns(A, t1)
+enemy(A, America)
+
+===== PAGE 3 =====
+Q2: Assume the following facts:
+John likes all kinds of food.
+Apple and vegetable are food.
+Anything anyone eats and is not killed is food.
+Anil eats peanuts and still alive.
+Harry eats everything that Anil eats.
+Prove by resolution that "John likes peanuts."
+Converting facts to first order logic:
+Vx food(x) - likes (John, x)
+food(Apple) A food(Vegetables)
+Vx Vy eats(x, y) A -killed(x, y) >> foodly)
+eats (Anil, Peanuts) A alive(Anil)
+Vx eats(Anil, x) - eats (Harry, x)
+Vx killed(x) - alive(x)
+Vx alive(x) > -killed(x)
+Converting expressions to CNF:
+Vx food(x) V likes( (John, x)
+food(Apple) A food(Vegetables)
+Vx Vy weats(x, y) V killed(x, y)) V
+foodly)
+eats (Anil, Peanuts) A alive(Anil)
+Vx reats (Anil, x) V eats (Harry, x)
+Vx killed(x) V alive(x)
+
+===== PAGE 4 =====
+Standardize variables and drop quantifiers:
+food(x) V likes(John, x)
+foo(Apple)
+food(Vegetable)
+reatsly, z) V killed(y) V food(z)
+eats (Anil, Peanuts)
+alive(Anil)
+reats( (Anil, w) V eats - (Harry, w)
+killed(g) V alivelg)
+To prove: likes (John, Peanuts)
+Resolution graph:
+
+===== PAGE 5 =====
+Contradiction
+-alive(Anil)
+alive(Anil)
+(Anil/g}
+killed(Anil)
+alive(g) V -killed(g)
+(Anil/y}
+-eats(y, Peanuts) V killed(y)
+eats(Anil, Peanuts)
+(Peanuts Iz}
+-food(Peanuts)
+-eats(y, z)vi killed(y) vt food(z)
+(Peanuts/x}
+likes(John, Peanuts)
+-food(x) vl likes(John,: x)
+Assumption
+Therefore likes (John, Peanuts)
+Q3: Assume the following facts:
+Amit only likes easy courses.
+Science courses are hard.
+All the courses in the basket weaving department are easy.
+BK-304 is a basket weaving course.
+Use resolution to answer: "What courses would Amit like?"
+Converting facts to first order logic:
+Vx course(x) A easy(x) - likes (Amit, x)
+
+===== PAGE 6 =====
+Vx scienceCourse(x) - reasy(x)
+Vx basketWeavingCourse(x) > easy(x)
+basketleavingCourse(BK-304)
+Vx scienceCourse(x) > course(x)
+Vx basketWeavingCourse(x) > course(x)
+Converting expressions to CNF:
+Vx rcourse(x) V reasy(x) V likes (Amit, x)
+Vx scienceCourse(x) V reasy(x)
+Vx -basketWeavingCourse(x) V easy(x)
+basketWeavingCourse(BK-304)
+Vx -scienceCourse(x) V course(x)
+Vx -basketWeavingCourse(x) V course(x)
+Standardize variables and drop quantifiers:
+"course(x) V weasy(x) V likes (Amit, x)
+wscienceCoursely) V reasyly)
+-basketWeaavingCourse(z) V easy(z)
+basketWeavingCourse(BK-304)
+*scienceCourse(w) V course(w)
+-basketWeavingCourse(k) V course(k)
+Resolution Graph:
+
+===== PAGE 7 =====
+likes(Amit, BK-304)
+(BK-304/x}
+easy(BK-304)
+course(BK-304)
+-course(x) V -easy(x) vI likes(Amit, x)
+(BK-304/k}
+basketWeavingCourse(BK-304)
+-basketWeavingCourse(k)1 V course(k)
+(BK-304/z}
+basketWeavingCourse(BK-304)
+-basketWeavingCourse(2) V easy(z)
+Therefore, Amit likes the course BK-304

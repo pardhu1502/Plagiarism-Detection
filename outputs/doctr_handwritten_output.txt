@@ -1,0 +1,331 @@
+
+===== PAGE 1 =====
+Name - KlAhha OAV
+Pollro.- 22BCCOSt.
+JRBAI
+EDGI
+It w -
+C chimo far on Amesscoh to bell wootov -
+to hostile ho Hons
+Ameicanlhlauinton la A collylpa
+trortilala-Givird
+L1
+()
+Now
+Countsy A har Lomo wissiles =l.
+Ouons - LA T
+Minilelt)
+All the misiles wOP 2old te countrit lytohet.
+- Sell, Pebert P A
+tp Minilelh) A EroaA,p)
+Now we can hay
+Missilelp) 1 Weobonlh)
+S
+> Hostilelb
+6
+Eresonyfh,Awaica
+a
+Enomy I - A, Amorica
+Letert iu Avericoh A0z
+Ame Bican Pe ne
+8
+Novo in Foswosd checking.
+I
+In the fint bteb
+l will stait wuth khouh
+tacts and unll choche kentence which
+do not haye imflications
+them Cu la llows
+we will rehiegent
+MIMIATI)
+OwnlA,)
+Erennyh, Thwel
+AmeicanlPobert)
+CA
+
+===== PAGE 2 =====
+EDGE URBAN
+o
+beconalsleb ue uillsee thore facts uhich Ine
+from available facts with satidlied
+bemines
+Rulelt) doesn't satisly (remisls AD it will
+not be addedl D' in the finst iteration
+Pule (2) and13) aul alsoady added
+Pulely) satisly with suhshtution.
+Pule - (6)i Aa batidiedmith substitution
+also
+Ao now
+weabons T)
+Sells(fchet,1,)
+HostelA)
+Amicallcheut)
+FunielT,)
+Owns(AT
+Enemy (A, Amelig)
+bo now we check
+Pulelt) agai h
+Tt Li pa Halied uith
+the Alkfitutio W
+a p/Robert qT A A
+60 we can ado
+C himihal Crohent
+which infers
+all the
+avaitahle fac ts
+Hehce Ud
+reached oul goa
+Stalement.
+and
+by this we Concludle ol
+that Peheut us Caimihal
+
+===== PAGE 3 =====
+EDGH
+/
+Chiminal(lobert
+Weahom(Ti)
+cellafabot,d)
+HOAliOA
+Amelican (Pabeut)
+Funelti)
+Owwsln,1.)
+EnorA, Amonco
+Aa
+Wei Cahu Say Gobeut lis Crimchol.
+Ans L
+Skp1
+Convesbion.a Facts Linto FOL
+al
+Hx: fodd(x) 1 > likes € Tohn, X
+
+fooclCApple) A foodlvegeta bled
+Hx wy eatsix,y) A  - Nedlh)->-foodly
+a
+cats ( Ahil, PeahubsA alive Anil
+2 Yx eatslAnil x >> eats Hally
+fs
+Hx: -killed(x)
+- alivelx)
+Adolee
+gy
+Hxinalive (x)
+> - nkilledix)
+Predicaleg
+h>
+likeslTohn Peanuts
+Steb2
+Canvession al Fol a into CNF.
+Elimnate all ineplicalion e
+(-and Aeulite
+- Vx-foodlx) V Aeker (Tohn,x)
+a food/Abple A food.lvegctable)
+Vxvy- eats (xy) A-Elleoltv foodly
+
+===== PAGE 4 =====
+EDGE RBAN
+eatol Anil Teawuta)Aolive - Anid
+Hx- eats CAnil x V eats Hally,x
+o
+Ho 1 I- killed (x)] V alive (x)
+xzalively) VA killedlx)
+LikesTohh, Peanuts
+Nove negationl-) inwaids and heulite
+C Hx-toodlz) V literlJohn,x)
+e foodlAbhle
+A food I vegetables
+o 4xyy - eatlxy V killdd V fodd 4
+6
+eats lAnil, Peanuts) A alive ( Anil
+Hx 7 catal Anil,  V eats (Hally, X
+Hoonkilled (x) V alive (x)
+xalive (x) V7 killed (x).
+like - (Tahn Peanuts
+Pe hame vaiiables ah standaidize Vaiiables
+Yx- Food(x) V likelTohn, X
+- Food C Abble I A food (véoe tables
+e Vytz - eatalu N V killed ly) V Foodlz
+*
+eats Anil feaw 
+alive (Anil
+a
+Yw-eats lAnil 3
+Veatx Houl E
+Hg-killedla) V alivelg
+k 1 alive (k)V 1 killed
+liker(Tohh
+Peanuts)
+DAcb Universal quantifiers
+Atoodix V
+liker Tohn,
+foo - CAbhl
+
+===== PAGE 5 =====
+URBAN
+EDGE
+foodlvegetables
+I
+neatsly,z) V killedly) foodiz)
+-
+eats (Anil Peanuts)
+alive C Anil
+-
+neats (Anil W) V eats I I Hauy W
+e
+killodlg) V alive L 9
+e
+alive k V-killed
+likes (Tohn, Peanuks)
+Now kue will eliminate existential Quantifier
+3 and this hloces Li known as skal mization.
+fince there l 3 ho existential
+ghantitier,o all
+the stalemonts uill rewain Acwe 1h U
+the steb,
+Dintaihule Conjuchion A over disjunchion 1
+This sleb uill hot wake any Change ih this
+pra bo m
+Steb 3
+Tn this Stale ment we uill abble
+hegation to the conclusion
+stalements
+-likelTohn, Teanubs
+stdb 4 Daaw fesolution Kuabh
+litetTohn Peanuts)
+< food (x) Vlikelld
+1)
+roool Peanints
+eanuts X
+egblyz vkilled
+V Foodz
+eAUt
+
+===== PAGE 6 =====
+URELN EDGI
+SLLY
+Dous Reicution Guaph
+likeThn Peouide)
+hydly)vikes L
+lovukx
+heodltzosuk
+neoklyz)v ANeolyVrodz
+-
+-
+Steubt
+-2016 E2x LVELdly
+coly (Avil Reswil
+
+Thutlyy
+ADAwl)
+noneo)v-kiledlk
+S Shriljet
+-alivelanal)
+clive
+s
+S
+L
+Herts Praved
+L
+Lo Byy trin w0 kave Yoven Hrot Ihn
+ike Reonuts.
+342
+Conyesking iD FOL:
+4o Srienieto
+Hod ( C
+yr: takotle)
+RosM (c
+hosket LEK-304)
+yC: 20Ny Le = -
+k
+1 t
+Carvestivg 1o CDE
+2024
+V likerlhmit
+
+===== PAGE 7 =====
+URBAN
+EDGI
+Science (c V haid.Cc)
+- baket - (c) V lasyle
+baiket (Bk-304
+Anal ue also adal :
+Hor Hardllc) 659 easy (C
+n
+H haudlc) Vu lasylc)
+ealy lcv haudlle I 1
+to Find: fau luhat X, likes (Amit,x)
+halds?
+Akuming gome Caulge Lc) that amitdidiker-
+- likes Amik, C
+yeayle)v likerlAmit,
+A calu
+uhaket (c) V cayle)
+M baketlc)
+Now i that Coulse 'c) u aharket weauing
+2
+Carle
+BK-304
+S I
+Resoluing m barfet C 0
+C=
+L
+( BK-304)8 haket(Bk-30
+'
+Amik likes BK-304
+Aliter
+Alteanative Selh
+Facts in Fint - Osoler logic.
+l. Hylcouse () 4 Easylx)
+> Likes (Amit X
+2.
+fx Sciencelausse Cx)
+CO
+
+===== PAGE 8 =====
+EDGI URBA
+3.
+NoclbatetWeauing Couuelx) > Cary(x)
+Y.
+Barket Weauihg Cowse CBK4304
+wemant lo delesmive uhich Couuey Anut
+likes iue. Eind X Auch that Likes (Anutx)
+Steb- hy Steb Reolution'
+Convet Facta into Clausal Foimi-
+ax, Couhse (x) A farylx) -> likes (Amit,>
+Convert tot
+- Couelx) Nnfaulx)V Likes CAmit, X
+by
+Science Causelx)- fagix
+Convert lo1
+Scie hce Couse (x)Vafayy
+C>
+Basket Weakingcourse (x) Sy Foryly)
+I Basket Weouing Course Cx) V faryir
+d
+Raket Weaunq Coulle LBk -304
+This is alleady C fact.
+D
+Substitwe facts:
+1 Basketweauing Couse.lx)V Ceary (x
+Auhtitule BK-304 fas DU
+Cartek-204
+
+===== PAGE 9 =====
+URBAN
+EDGI
+This means
+Bk-304 us an cary
+coulse
+lact
+( .
+Abply
+Modus Ponens UningABk-204 Ly eay
+xl6 foubse (x) Afauyls likes (Amit,
+Amit Cikes RK-204 alsuming BK-304 i
+a cousbe
+Thefare ue Conclude I
+likes ( Anitt Bk-304
+AO
+wl Conc ludo
+Amit likes Bk -304 luhic
+sis beuket weauing Coulse
