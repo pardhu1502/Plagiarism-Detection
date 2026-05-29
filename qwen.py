@@ -1,87 +1,107 @@
-import os
-import torch
+# qwen_only_ocr.py
+
+import time
 import fitz
-
+import torch
 from PIL import Image
-
 from transformers import (
     AutoProcessor,
-    Qwen2VLForConditionalGeneration
+    Qwen2_5_VLForConditionalGeneration
 )
 
-from qwen_vl_utils import process_vision_info
+# ============================================================
+# CONFIG
+# ============================================================
 
-MODEL_NAME = "Qwen/Qwen2-VL-2B-Instruct"
+PDF_PATH = r"C:/Users/pardh/Downloads/PDP/24-25 Assignment 1/Please upload your assignment file (in .pdf format) (File responses)/22bcs002_assignment2 - ABHIJAY IIIT Dharwad.pdf"
 
-PDF_PATH = r"C:/Users/pardh/Downloads/PDP/24-25 Assignment 1/Please upload your assignment file (in .pdf format) (File responses)/22bcs057-3 - KRISHNA JOSHI IIIT Dharwad.pdf"
+OUTPUT_FILE = "qwen_only_output.txt"
 
-OUTPUT_FILE = "qwen_output.txt"
+MODEL_NAME = "Qwen/Qwen2.5-VL-3B-Instruct"
 
-IMAGE_DIR = "temp_pages"
+DPI = 220
 
-os.makedirs(IMAGE_DIR, exist_ok=True)
-
+# ============================================================
+# GPU CHECK
+# ============================================================
 
 print("=" * 60)
 
 if torch.cuda.is_available():
-    device = "cuda"
+    DEVICE = "cuda"
     print("GPU DETECTED")
     print("GPU:", torch.cuda.get_device_name(0))
 else:
-    device = "cpu"
+    DEVICE = "cpu"
     print("GPU NOT FOUND")
     print("Using CPU")
 
 print("=" * 60)
 
+# ============================================================
+# LOAD MODEL
+# ============================================================
 
-print("Loading model...")
+print("Loading Qwen2.5-VL model...")
 
 processor = AutoProcessor.from_pretrained(MODEL_NAME)
 
-model = Qwen2VLForConditionalGeneration.from_pretrained(
+model = Qwen2_5_VLForConditionalGeneration.from_pretrained(
     MODEL_NAME,
-    torch_dtype=torch.float16 if device == "cuda" else torch.float32,
+    torch_dtype=torch.float16 if DEVICE == "cuda" else torch.float32,
     device_map="auto"
 )
 
-print("Model loaded successfully!")
+model.eval()
 
+print("Model Loaded Successfully")
 
-print("Reading PDF...")
+print("=" * 60)
 
-doc = fitz.open(PDF_PATH)
+# ============================================================
+# PDF PAGE -> IMAGE
+# ============================================================
 
-all_text = ""
+def render_page(page, dpi=220):
 
+    mat = fitz.Matrix(dpi / 72, dpi / 72)
 
+    pix = page.get_pixmap(
+        matrix=mat,
+        alpha=False
+    )
 
-for page_num in range(len(doc)):
-
-    print("\n" + "=" * 60)
-    print(f"Processing page {page_num + 1}")
-    print("=" * 60)
-
-    
-
-    page = doc.load_page(page_num)
-
-    pix = page.get_pixmap(matrix=fitz.Matrix(2, 2))
-
-    img = Image.frombytes(
+    image = Image.frombytes(
         "RGB",
         [pix.width, pix.height],
         pix.samples
     )
 
-    image_path = os.path.join(
-        IMAGE_DIR,
-        f"page_{page_num + 1}.png"
-    )
+    return image
 
-    img.save(image_path)
 
+# ============================================================
+# QWEN OCR
+# ============================================================
+
+def qwen_extract(image):
+
+    prompt = """
+You are an advanced OCR system.
+
+Extract ALL text from the image accurately.
+
+Important instructions:
+1. Extract handwritten text carefully
+2. Extract typed text carefully
+3. Preserve equations and symbols
+4. Preserve formatting and line breaks
+5. Extract resolution graphs and diagrams
+6. Do NOT summarize
+7. Do NOT explain
+8. Return ONLY extracted text
+9. If some text is unclear, still try your best
+"""
 
     messages = [
         {
@@ -89,28 +109,15 @@ for page_num in range(len(doc)):
             "content": [
                 {
                     "type": "image",
-                    "image": image_path,
+                    "image": image
                 },
                 {
                     "type": "text",
-                    "text": """
-Extract ALL text from this assignment page accurately.
-
-Important instructions:
-1. Preserve handwritten text.
-2. Preserve typed text.
-3. Preserve equations and symbols.
-4. Preserve line breaks.
-5. Preserve formatting as much as possible.
-6. Do NOT summarize.
-7. Output only extracted text.
-8. Keep question numbers and steps aligned properly.
-"""
+                    "text": prompt
                 }
             ]
         }
     ]
-
 
     text_prompt = processor.apply_chat_template(
         messages,
@@ -118,38 +125,30 @@ Important instructions:
         add_generation_prompt=True
     )
 
-    image_inputs, video_inputs = process_vision_info(messages)
-
     inputs = processor(
         text=[text_prompt],
-        images=image_inputs,
-        videos=video_inputs,
+        images=[image],
         padding=True,
         return_tensors="pt"
-    )
-
-    inputs = inputs.to(device)
-
-
-    print("Running OCR...")
+    ).to(model.device)
 
     with torch.no_grad():
 
         generated_ids = model.generate(
             **inputs,
-            max_new_tokens=2048,
-            do_sample=False
+            max_new_tokens=4096,
+            do_sample=False,
+            temperature=0.1,
+            repetition_penalty=1.05
         )
 
-
     generated_ids_trimmed = [
-        output_ids[len(input_ids):]
-        for input_ids, output_ids in zip(
+        out_ids[len(in_ids):]
+        for in_ids, out_ids in zip(
             inputs.input_ids,
             generated_ids
         )
     ]
-
 
     output_text = processor.batch_decode(
         generated_ids_trimmed,
@@ -157,20 +156,146 @@ Important instructions:
         clean_up_tokenization_spaces=False
     )[0]
 
+    return output_text
+
+
+# ============================================================
+# GPU STATS
+# ============================================================
+
+def print_gpu_stats():
+
+    if torch.cuda.is_available():
+
+        allocated = (
+            torch.cuda.memory_allocated() / (1024 ** 3)
+        )
+
+        reserved = (
+            torch.cuda.memory_reserved() / (1024 ** 3)
+        )
+
+        print(f"GPU Allocated Memory : {allocated:.2f} GB")
+        print(f"GPU Reserved Memory  : {reserved:.2f} GB")
+
+
+# ============================================================
+# MAIN
+# ============================================================
+
+start_total = time.time()
+
+print("Opening PDF...")
+
+doc = fitz.open(PDF_PATH)
+
+print(f"Total Pages: {len(doc)}")
+
+all_text = []
+
+# ============================================================
+# PROCESS EACH PAGE
+# ============================================================
+
+for page_num in range(len(doc)):
+
+    page_start = time.time()
+
+    print("\n" + "=" * 60)
+    print(f"Processing Page {page_num + 1}")
+    print("=" * 60)
+
+    # --------------------------------------------------------
+    # LOAD PAGE
+    # --------------------------------------------------------
+
+    page = doc[page_num]
+
+    print("Rendering page image...")
+
+    image = render_page(page, dpi=DPI)
+
+    # --------------------------------------------------------
+    # OCR
+    # --------------------------------------------------------
+
+    print("Running Qwen OCR...")
+
+    extracted_text = qwen_extract(image)
+
+    # --------------------------------------------------------
+    # SAVE PAGE OUTPUT
+    # --------------------------------------------------------
+
+    page_text = (
+        f"\n===== PAGE {page_num + 1} =====\n"
+    )
+
+    page_text += extracted_text + "\n"
+
+    all_text.append(page_text)
+
+    # --------------------------------------------------------
+    # PRINT OUTPUT
+    # --------------------------------------------------------
 
     print("\nExtracted Text:\n")
-    print(output_text[:1000])
 
-    all_text += f"\n===== PAGE {page_num + 1} =====\n\n"
-    all_text += output_text
-    all_text += "\n"
+    print(extracted_text[:5000])
 
+    # --------------------------------------------------------
+    # PAGE TIMING
+    # --------------------------------------------------------
 
-with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-    f.write(all_text)
+    page_end = time.time()
+
+    print("\n" + "-" * 60)
+
+    print(
+        f"Page {page_num + 1} completed in "
+        f"{page_end - page_start:.2f} seconds"
+    )
+
+    print("-" * 60)
+
+    print_gpu_stats()
+
+    # --------------------------------------------------------
+    # CLEAR GPU CACHE
+    # --------------------------------------------------------
+
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+
+# ============================================================
+# SAVE FINAL OUTPUT
+# ============================================================
+
+with open(
+    OUTPUT_FILE,
+    "w",
+    encoding="utf-8"
+) as f:
+
+    f.write("\n".join(all_text))
+
+# ============================================================
+# FINAL STATS
+# ============================================================
+
+end_total = time.time()
 
 print("\n" + "=" * 60)
 print("OCR COMPLETED")
 print("=" * 60)
 
 print(f"\nSaved extracted text to: {OUTPUT_FILE}")
+
+print("\n" + "=" * 60)
+
+print(
+    f"TOTAL EXECUTION TIME: "
+    f"{end_total - start_total:.2f} seconds"
+)
+
+print("=" * 60)

@@ -12,7 +12,7 @@ from transformers import (
 )
 
 
-PDF_PATH = r"C:/Users/pardh/Downloads/PDP/24-25 Assignment 1/Please upload your assignment file (in .pdf format) (File responses)/22bcs057-3 - KRISHNA JOSHI IIIT Dharwad.pdf"
+PDF_PATH = r"C:/Users/pardh/Downloads/PDP/24-25 Assignment 1/Please upload your assignment file (in .pdf format) (File responses)/22bcs002_assignment2 - ABHIJAY IIIT Dharwad.pdf"
 OUTPUT_FILE = "hybrid_handwritten_output.txt"
 
 MODEL_NAME = "Qwen/Qwen2.5-VL-3B-Instruct"
