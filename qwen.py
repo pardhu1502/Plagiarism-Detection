@@ -1,5 +1,3 @@
-# qwen_only_ocr.py
-
 import time
 import fitz
 import torch
@@ -9,10 +7,6 @@ from transformers import (
     Qwen2_5_VLForConditionalGeneration
 )
 
-# ============================================================
-# CONFIG
-# ============================================================
-
 PDF_PATH = r"C:/Users/pardh/Downloads/PDP/24-25 Assignment 1/Please upload your assignment file (in .pdf format) (File responses)/22bcs002_assignment2 - ABHIJAY IIIT Dharwad.pdf"
 
 OUTPUT_FILE = "qwen_only_output.txt"
@@ -21,9 +15,6 @@ MODEL_NAME = "Qwen/Qwen2.5-VL-3B-Instruct"
 
 DPI = 220
 
-# ============================================================
-# GPU CHECK
-# ============================================================
 
 print("=" * 60)
 
@@ -38,9 +29,6 @@ else:
 
 print("=" * 60)
 
-# ============================================================
-# LOAD MODEL
-# ============================================================
 
 print("Loading Qwen2.5-VL model...")
 
@@ -58,9 +46,6 @@ print("Model Loaded Successfully")
 
 print("=" * 60)
 
-# ============================================================
-# PDF PAGE -> IMAGE
-# ============================================================
 
 def render_page(page, dpi=220):
 
@@ -80,9 +65,6 @@ def render_page(page, dpi=220):
     return image
 
 
-# ============================================================
-# QWEN OCR
-# ============================================================
 
 def qwen_extract(image):
 
@@ -159,9 +141,6 @@ Important instructions:
     return output_text
 
 
-# ============================================================
-# GPU STATS
-# ============================================================
 
 def print_gpu_stats():
 
@@ -179,9 +158,6 @@ def print_gpu_stats():
         print(f"GPU Reserved Memory  : {reserved:.2f} GB")
 
 
-# ============================================================
-# MAIN
-# ============================================================
 
 start_total = time.time()
 
@@ -193,9 +169,6 @@ print(f"Total Pages: {len(doc)}")
 
 all_text = []
 
-# ============================================================
-# PROCESS EACH PAGE
-# ============================================================
 
 for page_num in range(len(doc)):
 
@@ -205,9 +178,6 @@ for page_num in range(len(doc)):
     print(f"Processing Page {page_num + 1}")
     print("=" * 60)
 
-    # --------------------------------------------------------
-    # LOAD PAGE
-    # --------------------------------------------------------
 
     page = doc[page_num]
 
@@ -215,17 +185,11 @@ for page_num in range(len(doc)):
 
     image = render_page(page, dpi=DPI)
 
-    # --------------------------------------------------------
-    # OCR
-    # --------------------------------------------------------
 
     print("Running Qwen OCR...")
 
     extracted_text = qwen_extract(image)
 
-    # --------------------------------------------------------
-    # SAVE PAGE OUTPUT
-    # --------------------------------------------------------
 
     page_text = (
         f"\n===== PAGE {page_num + 1} =====\n"
@@ -235,17 +199,10 @@ for page_num in range(len(doc)):
 
     all_text.append(page_text)
 
-    # --------------------------------------------------------
-    # PRINT OUTPUT
-    # --------------------------------------------------------
 
     print("\nExtracted Text:\n")
 
     print(extracted_text[:5000])
-
-    # --------------------------------------------------------
-    # PAGE TIMING
-    # --------------------------------------------------------
 
     page_end = time.time()
 
@@ -260,16 +217,10 @@ for page_num in range(len(doc)):
 
     print_gpu_stats()
 
-    # --------------------------------------------------------
-    # CLEAR GPU CACHE
-    # --------------------------------------------------------
 
     if torch.cuda.is_available():
         torch.cuda.empty_cache()
 
-# ============================================================
-# SAVE FINAL OUTPUT
-# ============================================================
 
 with open(
     OUTPUT_FILE,
@@ -279,9 +230,6 @@ with open(
 
     f.write("\n".join(all_text))
 
-# ============================================================
-# FINAL STATS
-# ============================================================
 
 end_total = time.time()
 
