@@ -13,7 +13,7 @@ from qwen_vl_utils import process_vision_info
 
 MODEL_NAME = "Qwen/Qwen2-VL-2B-Instruct"
 
-PDF_PATH = r"C:/Users/pardh/Downloads/PDP/24-25 Assignment 1/Please upload your assignment file (in .pdf format) (File responses)/22BCS001 - ABHIGYAN NIRANJAN IIIT Dharwad.pdf"
+PDF_PATH = r"C:/Users/pardh/Downloads/PDP/24-25 Assignment 1/Please upload your assignment file (in .pdf format) (File responses)/22bcs057-3 - KRISHNA JOSHI IIIT Dharwad.pdf"
 
 OUTPUT_FILE = "qwen_output.txt"
 
