@@ -1,0 +1,13 @@
+streamlit
+pandas
+numpy
+scikit-learn
+sentence-transformers
+torch
+torchvision
+python-doctr
+pymupdf
+plotly
+networkx
+Pillow
+opencv-python
