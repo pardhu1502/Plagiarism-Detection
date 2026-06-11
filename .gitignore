@@ -5,3 +5,4 @@ Scripts/
 pyvenv.cfg
 .env
 outputs/
+qwen_gnhk_results.csv
